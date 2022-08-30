@@ -1,6 +1,8 @@
 using Serilog;
 using Serilog.Events;
 using Serilog.Filters;
+using Serilog_Poc.Infraestructura.Generic_log.Interface;
+using Serilog_Poc.Infraestructura.Generic_log.Service;
 
 try
 {
@@ -15,6 +17,10 @@ try
     builder.Host.UseSerilog(Log.Logger);
 
     builder.Services.AddControllers();
+
+    //builder.Services.AddScoped<ILog_Repository, LoggerRepository>();
+
+
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
