@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using Serilog_Poc.Infraestructura.Generic_log.Interface;
+using SerilogBase.Infraestructure.Interface;
 
 namespace Serilog_Poc.Controllers
 {
@@ -13,18 +13,20 @@ namespace Serilog_Poc.Controllers
     };
 
         private readonly ILogger<WeatherForecastController> _logger;
-        private readonly ILog_Repository _log_Repository;
+        private readonly ILogBase _logBase;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, ILogBase logBase)
         {
             _logger = logger;
+            _logBase = logBase;
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
-            _logger.LogInformation("Start Log WeatherForecast Method: GetWeatherForecast");
-            //_log_Repository.CreateLog("Iniciando novo log", LogLevel.Information);
+            _logger.LogInformation("Teste");
+            var log = _logBase.CreateModel("Teste", LogLevel.Information, "Sem erro");
+            _logBase.WriteLog(log);
             try
             {
                 return Enumerable.Range(1, 5).Select(index => new WeatherForecast
@@ -37,7 +39,7 @@ namespace Serilog_Poc.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error Method WeatherForecast.Get() with Error");
+                //_logger.LogError(ex, "Error Method WeatherForecast.Get() with Error");
                 throw;
             }
         }

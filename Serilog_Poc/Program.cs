@@ -1,8 +1,8 @@
 using Serilog;
-using Serilog.Events;
-using Serilog.Filters;
-using Serilog_Poc.Infraestructura.Generic_log.Interface;
-using Serilog_Poc.Infraestructura.Generic_log.Service;
+using SerilogBase;
+using SerilogBase.Infraestructure.Configuration;
+using SerilogBase.Infraestructure.Interface;
+using SerilogBase.Infraestructure.Service;
 
 try
 {
@@ -10,23 +10,24 @@ try
 
     // Add services to the container.
 
-    IConfigurationRoot configuration = IConfigurationEnvironment();
+    //IConfigurationRoot configuration = IConfigurationEnvironment();
 
-    ConfigurationLog(configuration);
+    //ConfigurationLog(configuration);
 
-    builder.Host.UseSerilog(Log.Logger);
+
+    builder.Host.UseSerilog(LogBaseConfig.ConfigurationLogBase());
 
     builder.Services.AddControllers();
-
-    //builder.Services.AddScoped<ILog_Repository, LoggerRepository>();
-
 
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
 
-    var app = builder.Build();
+    builder.Services.AddSingleton(sp => sp.GetRequiredService<ILoggerFactory>().CreateLogger("DefaultLogger"));
 
+    builder.Services.AddBMGLogger();
+
+    var app = builder.Build();
 
     // Configure the HTTP request pipeline.
     if (app.Environment.IsDevelopment())
@@ -63,13 +64,7 @@ IConfigurationRoot IConfigurationEnvironment()
 
 void ConfigurationLog(IConfigurationRoot configuration)
 {
-    Log.Logger = new LoggerConfiguration()
-            //.MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Information)
-            //.Enrich.FromLogContext()
-            .Enrich.WithProperty("ApplicationName", $"API Serilog - {Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}")
-            //.Filter.ByExcluding(Matching.FromSource("Microsoft.AspNetCore.StaticFiles"))
-            //.Filter.ByExcluding(z => z.MessageTemplate.Text.Contains("Business error"))
-            //.WriteTo.Async(wt => wt.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] {Message:lj} {Properties:j}{NewLine}{Exception}"))
+    Log.Logger = new LoggerConfiguration()          
             .ReadFrom.Configuration(configuration)
             .CreateLogger();
 }
