@@ -1,6 +1,7 @@
 ﻿
 using Microsoft.Extensions.Logging;
 using Serilog;
+using SerilogBase.Infraestructure.Configuration;
 using SerilogBase.Infraestructure.Interface;
 using SerilogBase.Model;
 
@@ -12,8 +13,7 @@ namespace SerilogBase.Infraestructure.Service
 
         public LogBaseService()
         {
-            _logger = new LoggerConfiguration()
-            .CreateLogger();
+            _logger = LogBaseConfig.ConfigurationLogBase();
         }
 
         public LogBase CreateModel(string nameSystem, LogLevel levelLog, string errorMensagem)
