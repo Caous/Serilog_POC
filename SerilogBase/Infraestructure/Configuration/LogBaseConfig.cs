@@ -6,7 +6,7 @@ using Serilog.Filters;
 namespace SerilogBase.Infraestructure.Configuration
 {
     public static class LogBaseConfig
-    {       
+    {
 
         public static ILogger ConfigurationLogBase()
         {
@@ -18,9 +18,14 @@ namespace SerilogBase.Infraestructure.Configuration
            .Filter.ByExcluding(z => z.MessageTemplate.Text.Contains("Business error"))
            .WriteTo.Async(wt => wt.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] {Message:lj} {Properties:j}{NewLine}{Exception}"))
            .CreateLogger();
-            //.ReadFrom.Configuration(configuration)
-            //.CreateLogger();
 
+        }
+
+        public static ILogger ConfigurationLogBaseJson(IConfiguration configuration)
+        {
+            return Log.Logger = new LoggerConfiguration()
+            .ReadFrom.Configuration(configuration)
+            .CreateLogger();
         }
     }
 }

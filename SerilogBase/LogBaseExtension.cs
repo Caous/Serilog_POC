@@ -7,9 +7,7 @@ namespace SerilogBase
 {
     public static class LogBaseExtension
     {
-        public static void AddBMGLogger(this IServiceCollection services) {
-            
-            
+        public static void AddLogBaseLogger(this IServiceCollection services) {
             services.AddScoped<ILogBase, LogBaseService>();
         }
     }

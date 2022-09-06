@@ -1,8 +1,6 @@
 using Serilog;
 using SerilogBase;
 using SerilogBase.Infraestructure.Configuration;
-using SerilogBase.Infraestructure.Interface;
-using SerilogBase.Infraestructure.Service;
 
 try
 {
@@ -10,10 +8,13 @@ try
 
     // Add services to the container.
 
-    //IConfigurationRoot configuration = IConfigurationEnvironment();
+    #region Config Serilog Json
 
-    //ConfigurationLog(configuration);
+    IConfigurationRoot configuration = IConfigurationEnvironment();
 
+    ConfigurationLog(configuration);
+
+    #endregion
 
     builder.Host.UseSerilog(LogBaseConfig.ConfigurationLogBase());
 
@@ -23,9 +24,7 @@ try
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
 
-    builder.Services.AddSingleton(sp => sp.GetRequiredService<ILoggerFactory>().CreateLogger("DefaultLogger"));
-
-    builder.Services.AddBMGLogger();
+    builder.Services.AddLogBaseLogger();
 
     var app = builder.Build();
 
@@ -64,7 +63,5 @@ IConfigurationRoot IConfigurationEnvironment()
 
 void ConfigurationLog(IConfigurationRoot configuration)
 {
-    Log.Logger = new LoggerConfiguration()          
-            .ReadFrom.Configuration(configuration)
-            .CreateLogger();
+    Log.Logger = LogBaseConfig.ConfigurationLogBaseJson(configuration);
 }

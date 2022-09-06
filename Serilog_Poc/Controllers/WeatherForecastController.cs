@@ -39,7 +39,7 @@ namespace Serilog_Poc.Controllers
             }
             catch (Exception ex)
             {
-                //_logger.LogError(ex, "Error Method WeatherForecast.Get() with Error");
+                _logger.LogError(ex, "Error Method WeatherForecast.Get() with Error");
                 throw;
             }
         }

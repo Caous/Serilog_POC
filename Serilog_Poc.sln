@@ -5,7 +5,11 @@ VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serilog_Poc", "Serilog_Poc\Serilog_Poc.csproj", "{38BD0FFA-B2C3-4BE3-BAB0-D143FF85157A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerilogBase", "SerilogBase\SerilogBase.csproj", "{E53F741B-2219-48AF-9D67-BEAE57EDC7DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SerilogBase", "SerilogBase\SerilogBase.csproj", "{E53F741B-2219-48AF-9D67-BEAE57EDC7DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schedule_Poc", "ClassLibrary1\Schedule_Poc.csproj", "{9F1B65CA-DB83-416A-BCF0-E766067D4A8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web_Framework_Poc", "Web_Framework_Poc\Web_Framework_Poc.csproj", "{9277032C-124F-40FE-9F5A-08A174834453}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{E53F741B-2219-48AF-9D67-BEAE57EDC7DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E53F741B-2219-48AF-9D67-BEAE57EDC7DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E53F741B-2219-48AF-9D67-BEAE57EDC7DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F1B65CA-DB83-416A-BCF0-E766067D4A8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F1B65CA-DB83-416A-BCF0-E766067D4A8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F1B65CA-DB83-416A-BCF0-E766067D4A8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F1B65CA-DB83-416A-BCF0-E766067D4A8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9277032C-124F-40FE-9F5A-08A174834453}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9277032C-124F-40FE-9F5A-08A174834453}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9277032C-124F-40FE-9F5A-08A174834453}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9277032C-124F-40FE-9F5A-08A174834453}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
