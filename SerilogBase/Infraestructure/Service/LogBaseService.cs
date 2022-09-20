@@ -17,10 +17,11 @@ namespace SerilogBase.Infraestructure.Service
             _logger = LogBaseConfig.ConfigurationLogBase();
             
         }
-        public LogBaseService(IConfiguration configuration)
-        {
-            _logger = LogBaseConfig.ConfigurationLogBaseJson(configuration);
-        }
+
+        //public LogBaseService(IConfiguration configuration)
+        //{
+        //    _logger = LogBaseConfig.ConfigurationLogBaseJson(configuration);
+        //}
 
         public LogBase CreateModel(string nameSystem, LogLevel levelLog, string errorMensagem)
         {

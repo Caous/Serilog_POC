@@ -12,9 +12,13 @@ namespace Web_Framework_Poc
 {
     public partial class _Default : Page
     {
-        protected void Page_Load(object sender, EventArgs e)
+
+       
+        protected void Page_Load(object sender, EventArgs e, ILogBase logBase)
         {
-            
+
         }
+
+     
     }
 }

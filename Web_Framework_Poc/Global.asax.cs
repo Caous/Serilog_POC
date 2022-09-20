@@ -1,9 +1,12 @@
 ﻿using SerilogBase.Infraestructure.Interface;
 using SerilogBase.Infraestructure.Service;
+using SimpleInjector.Integration.Web.Mvc;
+using SimpleInjector;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Security;
@@ -15,13 +18,25 @@ namespace Web_Framework_Poc
     {
         void Application_Start(object sender, EventArgs e)
         {
+            RegisterContainer();
             // Code that runs on application startup
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            //Ninject.IKernel inject = new StandardKernel();
-            //inject.Bind<ILogBase>().To<LogBaseService>();
 
+
+        }
+
+        private void RegisterContainer()
+        {
+            var container = new Container();
+
+            container.Register<ILogBase, LogBaseService>(Lifestyle.Singleton);
+
+            container.Verify();
+
+            DependencyResolver.SetResolver(
+                new SimpleInjectorDependencyResolver(container));
 
         }
     }
