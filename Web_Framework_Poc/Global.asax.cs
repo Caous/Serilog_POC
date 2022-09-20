@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SerilogBase.Infraestructure.Interface;
+using SerilogBase.Infraestructure.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,6 +18,11 @@ namespace Web_Framework_Poc
             // Code that runs on application startup
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            //Ninject.IKernel inject = new StandardKernel();
+            //inject.Bind<ILogBase>().To<LogBaseService>();
+
+
         }
     }
 }

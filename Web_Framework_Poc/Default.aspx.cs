@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using SerilogBase.Infraestructure.Interface;
+using SerilogBase.Infraestructure.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +14,7 @@ namespace Web_Framework_Poc
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
     }
 }

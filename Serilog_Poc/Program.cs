@@ -10,9 +10,9 @@ try
 
     #region Config Serilog Json
 
-    IConfigurationRoot configuration = IConfigurationEnvironment();
+    //IConfigurationRoot configuration = IConfigurationEnvironment();
 
-    ConfigurationLog(configuration);
+    //ConfigurationLog(configuration);
 
     #endregion
 

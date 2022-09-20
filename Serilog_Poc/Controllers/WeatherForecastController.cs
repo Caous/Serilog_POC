@@ -12,19 +12,16 @@ namespace Serilog_Poc.Controllers
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
     };
 
-        private readonly ILogger<WeatherForecastController> _logger;
         private readonly ILogBase _logBase;
 
         public WeatherForecastController(ILogger<WeatherForecastController> logger, ILogBase logBase)
         {
-            _logger = logger;
             _logBase = logBase;
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
-            _logger.LogInformation("Teste");
             var log = _logBase.CreateModel("Teste", LogLevel.Information, "Sem erro");
             _logBase.WriteLog(log);
             try
@@ -39,7 +36,8 @@ namespace Serilog_Poc.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error Method WeatherForecast.Get() with Error");
+                log = _logBase.CreateModel("Error Method WeatherForecast.Get() with Error", LogLevel.Information, ex.ToString());
+                _logBase.WriteLog(log);
                 throw;
             }
         }
