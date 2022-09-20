@@ -8,22 +8,28 @@ using System.Web.UI.WebControls;
 using System.ComponentModel.Composition;
 using Microsoft.Extensions.Logging;
 using SerilogBase.Model;
+using Web_Framework_Poc.Service;
 
 namespace Web_Framework_Poc
 {
     public partial class About : Page
     {
-        [Import] private readonly ILogBase _logBase;
+        private ILogBase LogBase;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             TestLog();
         }
 
+        public About(ILogBase logBase)
+        {
+            LogBase = logBase;
+        }
+
         private void TestLog()
         {
-            var log = _logBase.CreateModel("Teste", LogLevel.Information, "Sem erro");
-            _logBase.WriteLog(log);
+            var log = this.LogBase.CreateModel("Teste", LogLevel.Information, "Sem erro");
+            LogBase.WriteLog(log);
         }
     }
 }

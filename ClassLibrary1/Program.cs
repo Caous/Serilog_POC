@@ -21,8 +21,17 @@ namespace Schedule_Poc
 
         static void Main(string[] args)
         {
-            var service = container.GetInstance<TestedLog>();
-            service.InicializeLog();
+            try
+            {
+                var service = container.GetInstance<TestedLog>();
+                service.InicializeLog();
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+           
         }
     }
 }

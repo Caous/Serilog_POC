@@ -14,7 +14,7 @@ namespace Schedule_Poc
         }
         public void InicializeLog() {
 
-            var log = _logger.CreateModel("Teste", LogLevel.Warning, "FOi poorra");
+            var log = _logger.CreateModel("Teste", LogLevel.Warning, "Teste Vinicius");
             _logger.WriteLog(log);
 
         }
