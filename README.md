@@ -1,5 +1,9 @@
-### <h2>Bem vindo,
-  <h5> POC com finalidade de implementação do Serilog e aperfeiçoamento  <img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30"> 
+
+![SERILOG](https://user-images.githubusercontent.com/38294660/191805936-6db05147-7198-45a2-a8a3-554832001e5b.png)
+
+
+### <h2>Fala Dev, seja muito bem-vindo,
+   Está POC é para mostrar como podemos implementar o Serilog em diversos projetos com injeção de dependência, também te explico oque é o Serilog espero que encontre oque procura  <img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30"> 
 </em></p></h5>
   
   </br>
@@ -11,11 +15,36 @@
 
 </br></br>
 
-### [Serilog] </br>
-<h5>Serilog é um framework muito forte e utilizado no mercado de trabalho, permitindo diversas configurações e também implementações com sistemas terceiros, como banco de dados, ferramentas analíticas e afins</h5>
+### <h2>Serilog <a href="https://serilog.net/" target="_blank"><img alt="Serilog" src="https://img.shields.io/badge/Serilog-v2.11.0-blue?style=flat&logo=google-chrome"></a>
 
+ <a href="https://serilog.net/" target="_blank">Serilog</a> é um framework muito forte por permitir que seus usuários que o utilizarem, possam fazer gerenciamento do Log em suas aplicações, seja uma aplicação Web API, Web, Console ou até mesmo um Library Class, permite gravação de Log do sistema como um todo, a utilizam da Framework Serilog permite integração com diversos sistemas C# e também podendo armazenar esses log em banco de dados, ferramentas analíticas e afins.
 
+</br></br>
 
+### <h2>[Cenário de Uso]
+Agora vamos imaginar o seguinte cenário, você precisa configurar o Serilog apenas para uma aplicação, mas então depois disto precisa monitorar o log de diversas aplicações, ao invés de fazer diversas configurações para Log,  por que não criar um Base? Que possa ser implementado via injeção de dependência ou até mesmo uma instância simples de Log. É exatamente isso que estou prestes a te mostrar para isso precisara instalar alguns caras.
+
+### <h2> Depêndencia
+Instalação do Serilog e para sua configuração e utilização ao máximo vamos instalar outros frameworks que possam ajudar a monitorar.
+
+Biblioteca principal do Serilog
+```C#
+dotnet add package Serilog.AspNetCore
+```
+Enrichers são para monitoramento da aplicação (servidor) etc...
+
+```C#
+dotnet add package Serilog.Enrichers.Environment
+dotnet add package Serilog.Enrichers.Process
+dotnet add package Serilog.Enrichers.Thread
+```
+
+Configurações do Serilog
+```C#
+dotnet add package Serilog.Expressions
+dotnet add package Serilog.Settings.Configuration
+dotnet add package Serilog.Sinks.Async
+```
 ### <h5> [IDE Utilizada]</h5>
 ![VisualStudio](https://img.shields.io/badge/Visual_Studio_2019-000000?style=for-the-badge&logo=visual%20studio&logoColor=purple)
 
