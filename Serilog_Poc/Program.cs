@@ -1,6 +1,7 @@
 using Serilog;
 using SerilogBase;
 using SerilogBase.Infraestructure.Configuration;
+using SerilogBase.Model;
 
 try
 {
@@ -16,7 +17,11 @@ try
 
     #endregion
 
-    builder.Host.UseSerilog(LogBaseConfig.ConfigurationLogBase());
+    var _enviroment = new LogBaseModel("Teste","dev","url",40);
+
+    builder.Host.UseSerilog(LogBaseConfig.ConfigurationLogBase(_enviroment));
+
+    builder.Services.AddLogBaseLogger(_enviroment);
 
     builder.Services.AddControllers();
 
@@ -24,7 +29,6 @@ try
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
 
-    builder.Services.AddLogBaseLogger();
 
     var app = builder.Build();
 

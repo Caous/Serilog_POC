@@ -12,9 +12,9 @@ namespace SerilogBase.Infraestructure.Service
     {
         private Serilog.ILogger _logger;
 
-        public LogBaseService()
+        public LogBaseService(LogBaseModel config)
         {
-            _logger = LogBaseConfig.ConfigurationLogBase();
+            _logger = LogBaseConfig.ConfigurationLogBase(config);
             
         }
 

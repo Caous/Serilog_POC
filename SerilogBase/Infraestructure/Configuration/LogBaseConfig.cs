@@ -2,13 +2,14 @@
 using Serilog;
 using Serilog.Events;
 using Serilog.Filters;
+using SerilogBase.Model;
 
 namespace SerilogBase.Infraestructure.Configuration
 {
     public static class LogBaseConfig
     {
 
-        public static ILogger ConfigurationLogBase()
+        public static ILogger ConfigurationLogBase(LogBaseModel config)
         {
             return Log.Logger = new LoggerConfiguration()
            .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Information)
